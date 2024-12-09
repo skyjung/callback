@@ -10,8 +10,8 @@ const LandingPage: React.FC = () => {
     <CustomNavbar></CustomNavbar>
     <Container fluid className="home-section" id="landing">
         <div className="text-center" style={{ padding: '50px 20px', color: '#1D1D1D' }}>
-            <h1><Type/></h1>
-            <p style={{ color: '#FFF2B1', fontSize: '1.5rem' }}>
+            <h1 style={{fontSize: '3rem'}}><Type/></h1>
+            <p style={{fontSize: '1.5rem' }}>
                 Welcome to Callback! Discover roles, post casting calls, and connect.
             </p>
         </div>

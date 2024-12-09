@@ -13,7 +13,7 @@ function Type() {
               "callback",
             ],
             autoStart: true,
-            loop: false, // Set loop to false
+            loop: true, // Set loop to false
             deleteSpeed: 30,
           }}
           onInit={(typewriter) => {

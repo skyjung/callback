@@ -1,0 +1,9 @@
+[
+    {
+      "origin": ["http://localhost:5174", "https://callback123456.netlify.app/"],
+      "method": ["GET", "POST", "PUT", "DELETE", "HEAD"],
+      "responseHeader": ["Content-Type", "Authorization"],
+      "maxAgeSeconds": 3600
+    }
+  ]
+  
