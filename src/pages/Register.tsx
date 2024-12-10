@@ -30,8 +30,9 @@ const Register = () => {
     <CustomNavbar></CustomNavbar>
     <Container id="register" className="home-section">
       <div className="content">
-        <h2>Register</h2>
+        
         <form onSubmit={handleRegister} className="form">
+        <h2>Register</h2>
           <input
             className="input"
             type="email"

@@ -6,7 +6,9 @@ import LandingPage from "./pages/Landing";
 import CastPosting from "./components/CastPosting";
 import SearchPage from "./components/Search";
 import UserProfile from "./components/UserProfile";
+import AboutPage from "./pages/About";
 import ProtectedRoute from "./ProtectedRoute";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -15,6 +17,7 @@ const App = () => {
         
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/" element={<LandingPage />} />
         {/* Protected routes */}
         <Route
@@ -42,7 +45,9 @@ const App = () => {
           }
         />
       </Routes>
+      <Footer />
     </Router>
+    
   );
 };
 

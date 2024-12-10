@@ -54,6 +54,11 @@ const CustomNavbar: React.FC = () => {
                 home
               </Nav.Link>
             </Nav.Item>
+            <Nav.Item>
+                <Nav.Link as={Link} to="/about" onClick={() => updateExpanded(false)}>
+                    about
+                </Nav.Link>
+            </Nav.Item>
             {user ? 
             <>
             <Nav.Item>
@@ -82,7 +87,14 @@ const CustomNavbar: React.FC = () => {
                 <Nav.Link as={Link} to="/login" onClick={() => updateExpanded(false)}>
                     login
                 </Nav.Link>
-            </Nav.Item></>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link as={Link} to="/register" onClick={() => updateExpanded(false)}>
+                    register
+                </Nav.Link>
+            </Nav.Item>
+            
+            </>
             }
           </Nav>
         </Navbar.Collapse>

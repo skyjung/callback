@@ -29,8 +29,8 @@ const Login = () => {
     <CustomNavbar></CustomNavbar>
     <Container id="login" className="home-section">
       <div className="content">
-        <h2>Login</h2>
         <form onSubmit={handleLogin} className="form">
+        <h2>Login</h2>
           <input
             className="input"
             type="email"
@@ -48,14 +48,15 @@ const Login = () => {
             required
           />
           <button type="submit" className="button">Login</button>
+          <p style={{marginTop: '10px'}}>
+            Don't have an account?{' '}
+            <Link to="/register" style={{ color: '#55987D' }}>
+              Register here
+            </Link>
+          </p>
         </form>
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <p>
-          Don't have an account?{' '}
-          <Link to="/register" style={{ color: '#55987D' }}>
-            Register here
-          </Link>
-        </p>
+        
       </div>
     </Container>
     </>

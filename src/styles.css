@@ -385,6 +385,9 @@ html, body {
     padding: 8rem 5rem 8rem 5rem !important;
     color: var(--black-color);
     text-align: left;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .profile {
@@ -463,4 +466,25 @@ html, body {
   .frame:hover {
     opacity: 1;
     z-index: 1000; /* Ensure the hovered image is on top */
+  }
+
+
+/* --------- */
+  /* Footer */
+  /* --------- */
+  .footer {
+    bottom: 0 !important;
+    /* font-size: x-small !important; */
+    padding-top: 10px !important;
+    padding-bottom: 8px !important ;
+  }
+  .footer-copywright {
+    text-align: center !important;
+  }
+  
+  .footer-body {
+    z-index: 1;
+    padding-top: 10px !important;
+    padding-bottom: 8px;
+    text-align: center !important;
   }
