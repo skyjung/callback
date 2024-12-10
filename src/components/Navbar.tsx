@@ -36,11 +36,11 @@ const CustomNavbar: React.FC = () => {
       expand="md"
       className={navColour ? "sticky" : "navbar"}
     >
-      <Container style={{'min-width': '100%'}}>
+      <Container style={{'minWidth': '100%'}}>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
           onClick={() => {
-            updateExpanded(expand ? false : "expanded");
+            updateExpanded(expand ? false : true);
           }}
         >
           <span></span>
@@ -63,12 +63,12 @@ const CustomNavbar: React.FC = () => {
             </Nav.Item>
             <Nav.Item>
               <Nav.Link as={Link} to="/post" onClick={() => updateExpanded(false)}>
-                post casting call
+                post
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link as={Link} to="/search" onClick={() => updateExpanded(false)}>
-                search roles
+                search
               </Nav.Link>
             </Nav.Item> 
             <Nav.Item>

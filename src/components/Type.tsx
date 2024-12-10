@@ -10,7 +10,7 @@ function Type() {
         <Typewriter
           options={{
             strings: [
-              "callback",
+              "CALLBACK...",
             ],
             autoStart: true,
             loop: true, // Set loop to false
@@ -18,7 +18,7 @@ function Type() {
           }}
           onInit={(typewriter) => {
             typewriter
-              .typeString("callback")
+              .typeString("CALLBACK...")
               .pauseFor(1000)
               .callFunction(() => {
                 setIsTypingComplete(true);
@@ -27,9 +27,9 @@ function Type() {
           }}
         />
       ) : (
-        <p className="Typewriter__wrapper">
-          callback<br></br>
-        </p>
+        <h1 className="Typewriter__wrapper" style={{fontWeight: 500, lineHeight:'1.5', whiteSpace: "nowrap",}}>
+          CALLBACK ...
+        </h1>
       )}
     </>
   );

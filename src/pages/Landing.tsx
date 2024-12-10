@@ -2,19 +2,41 @@ import React from 'react';
 import { Container, Row, Col } from "react-bootstrap";
 import CustomNavbar from '../components/Navbar';
 import Type from '../components/Type';
+import StopMotionGallery from '../components/StopMotionGallery';
 
 const LandingPage: React.FC = () => {
   return (
     <>
-    <section>
     <CustomNavbar></CustomNavbar>
+    <section>
     <Container fluid className="home-section" id="landing">
-        <div className="text-center" style={{ padding: '50px 20px', color: '#1D1D1D' }}>
-            <h1 style={{fontSize: '3rem'}}><Type/></h1>
-            <p style={{fontSize: '1.5rem' }}>
-                Welcome to Callback! Discover roles, post casting calls, and connect.
+      <Row className="align-content-center" style={{ width: "400px", marginTop: '5rem'}}>
+        <Col xs={12} md={8}>
+            <p style={{ fontSize: '1.5rem', padding: '30px' }}>
+              a community of aspiring filmmakers, actors, & creatives.
             </p>
-        </div>
+        </Col>
+        </Row>
+      <Row className="align-items-end"
+            style={{
+              position: "absolute",
+              bottom: "0",
+              marginLeft: '0.5rem',
+              width: "100%",}}>
+        <Col xs={12} md={8} >
+          <Type />
+        </Col>
+      </Row>
+    </Container>
+    </section>
+
+    <section>
+    <Container fluid className="home-section" id="landing">
+      <Row className="align-items-center justify-content-center" style={{ height: "100vh" }}>
+        <Col xs={12} md={10} className='d-flex justify-content-center' style={{padding: "0 1rem 0 1rem"}}>
+        <StopMotionGallery path={"home"} count={8}></StopMotionGallery>            
+        </Col>
+      </Row>
     </Container>
     </section>
     

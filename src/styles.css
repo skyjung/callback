@@ -2,23 +2,31 @@
     font-family: 'Univers Else';
     src: url('/fonts/univers-else-regular.TTF') format('ttf');
   }
-  
-  body {
-    font-family: 'Univers Else', sans-serif;
-    background-color: #1D1D1D;
-    color: #FFF2B1;
-  }
 
+@font-face {
+  font-family: 'InstrumentSerif';
+  src: url('/fonts/InstrumentSerif-Regular.TTF') format('truetype');
+}
+
+body {
+  font-family: 'InstrumentSerif', serif !important;
+  background-color: #E70000;
+  color: #FFF2B1;
+}
+
+html, body {
+  overflow-x: hidden;
+}
 
   :root {
     /* palette */
   
-    --black-color: #3e3e3e;
+    --black-color: #E70000;
     --dark-blue: #2d8aa9;
     --medium-blue: #b8dee8;
-    --light-blue: #1e1e1e;
+    --light-blue: #E70000;
     --mint: #d4e5c5;
-    --lime: #f0f4bf;
+    --lime: #FFFFF6;
     --sand: #fde3c3;
     --off-white: #F9F8F8;
     --white: #ffffff;
@@ -43,7 +51,8 @@
   
     /* typography */
   
-    --serif-fonts: Univers-Else,'UniversElse', serif;
+    --sans-serif-fonts: Univers-Else,'UniversElse', sans-serif;
+    --serif-fonts: Instrument,'Instrument', serif;
   
     /* spacing system */
     --space-factor: 8px;
@@ -73,12 +82,15 @@
   
     @media (max-width: 767px){
       h1 {
+        font-family: 'Univers Else', sans-serif;
         font-size: large;
       }
       h2 {
+        font-family: 'Univers Else', sans-serif;
         font-size: small;
       }
       h3 {
+        font-family: 'Univers Else', sans-serif;
         font-size: small;
       }
       .company-name{
@@ -86,11 +98,12 @@
       }
     }
     p {
+      font-family: 'InstrumentSerif', serif;
       color: var(--black-color);
     }
   
     body {
-      font-size: '8px';
+      font-size: '10px';
     }
   
     a:link, a:visited, a:hover, a:active {
@@ -102,6 +115,7 @@
       font-size: 3.5em;
       font-weight: 700;
       line-height: 1.8;
+      font-family: 'Univers Else', sans-serif;
       color: var(--black-color);
     }
   
@@ -109,12 +123,36 @@
       font-size: 2em;
       line-height: 1.8;
       font-weight: 600;
+      font-family: 'Univers Else', sans-serif;
     }
   
     h3 {
       font-size: 1.5em;
       line-height: 1.8;
       font-weight: 500;
+      font-family: 'Univers Else', sans-serif;
+    }
+
+    .Typewriter__wrapper {
+      font-size: 12rem !important;
+      font-family: 'Univers Else', sans-serif;
+      color: #E70000 !important;
+      overflow: 'hidden',
+    }
+    .Typewriter__cursor {
+      font-size: 12rem !important;
+      color: #E70000 !important;
+    }
+    
+    @media (max-width: 767px) {
+      .Typewriter__wrapper {
+        font-size: 1.4em !important;
+        font-weight: 500 !important;
+        position: absolute !important;
+      }
+      .Typewriter__cursor {
+        display: none !important;
+      }
     }
     
     /* --------- */
@@ -182,8 +220,27 @@
       position: fixed !important;
       transition: all 0.3s ease-out 0s !important;
       padding: 0.3rem 0.5rem !important;
-      font-size: 1rem !important;
-      font-family: 'Univers Else';
+      font-size: 2rem !important;
+      font-family: 'InstrumentSerif' !important;
+    }
+
+    .navbar-nav {
+      display: flex;
+      flex-direction: column; /* Stack nav items vertically */
+      align-items: flex-start; /* Align items to the left */
+      width: 100%; /* Ensure it spans full width */
+    }
+    
+    .nav-item {
+      width: 100%; /* Make each nav item span the full width */
+      /* padding-right: '1rem' !important; */
+    }
+    
+    .nav-link {
+      display: block; /* Ensure the links behave like block elements */
+      width: 100%;
+      padding: 1rem 1.5rem; /* Adjust padding for better spacing */
+      text-align: left; /* Align text to the left */
     }
     
     .navbar-toggler {
@@ -245,6 +302,10 @@
       .navbar-nav .nav-item a::after {
         display: none !important;
       }
+
+      .nav-link {
+        padding: 0.8rem 1rem; /* Adjust padding for smaller screens */
+      }
     }
     .navbar-brand {
       color: var(--light-blue) !important;
@@ -302,20 +363,19 @@
     }
 
 .home-section {
-    display: flex;
+    /* display: flex; */
     position: relative;
-    align-items: center;
-    justify-content: center;
     min-height: 100vh;
     min-width: 100vw;
+    padding: 10rem 0rem 0rem 0rem;
     background-color: var(--lime);
 }
 
 .section {
-    display: flex;
+    /* display: flex; */
     position: relative;
-    align-items: flex-start;
-    justify-content: center;
+    /* align-items: flex-start;
+    justify-content: center; */
     min-height: 100vh;
     min-width: 100vw;
     background-color: var(--lime);
@@ -362,7 +422,7 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    /* border: 1px solid #55987D; */
+    border: 1px solid #55987D;
     border-radius: 2px;
     background-color: var(--lime);
     color: #1D1D1D;
@@ -382,3 +442,25 @@
     background-color: #28691E;
   }
   
+/* StopMotion Style */
+
+  #stopmotion-container {
+    display: relative;
+    max-width: 1000vw;
+    max-height: 80vh;
+  }
+
+  .frame {
+      opacity: 0.1;
+      transition: opacity 0.2s ease-in-out;
+      max-width: '600px';
+  }
+
+  .frame.visible {
+      opacity: 1;
+  }
+
+  .frame:hover {
+    opacity: 1;
+    z-index: 1000; /* Ensure the hovered image is on top */
+  }

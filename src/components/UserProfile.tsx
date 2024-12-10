@@ -4,14 +4,6 @@ import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Container } from "react-bootstrap";
 import CustomNavbar from "./Navbar";
-
-type Profile = {
-    name: string;
-    age: string; // Use `string` if age is stored as a string, or `number` if it's numeric
-    ethnicity: string;
-    photo: string;
-    resume: string;
-  };
   
 
 
@@ -44,7 +36,7 @@ const UserProfile: React.FC = () => {
             const userData = userDoc.data();
             setProfile({
                 name: userData.name || "",
-                ageRange: userData.age || "",
+                ageRange: userData.ageRange || "",
                 ethnicity: userData.ethnicity || "",
                 photo: userData.photo || "",
                 resume: userData.resume || "",
