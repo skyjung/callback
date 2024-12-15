@@ -93,6 +93,11 @@ html, body {
         font-family: 'Univers Else', sans-serif;
         font-size: small;
       }
+      h4 {
+        font-family: 'InstrumentSerif', sans-serif;
+        font-size: small;
+        color:#E70000;
+      }
       .company-name{
         font-size: small;
       }
@@ -131,6 +136,14 @@ html, body {
       line-height: 1.8;
       font-weight: 500;
       font-family: 'Univers Else', sans-serif;
+    }
+
+    h4 {
+      font-family: 'InstrumentSerif', sans-serif !important;
+      font-size: 1.5em;
+      line-height: 1.8;
+      font-weight: 500;
+      color: var(--black-color);
     }
 
     .Typewriter__wrapper {
@@ -390,11 +403,30 @@ html, body {
     justify-content: center;
 }
 
+.postings {
+  border: 2px solid red;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.posting {
+  border: 2px solid red;
+  border-radius: 0;
+  width: 100%;
+  /* margin: 20px; */
+  padding: 20px;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
 .profile {
     padding: 8rem 8rem 8rem 8rem !important;
     color: var(--black-color);
     text-align: left;
-    width: 100%;
+    width: 70%;
 }
 
 .search {

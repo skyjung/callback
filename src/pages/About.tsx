@@ -6,14 +6,13 @@ const AboutPage: React.FC = () => {
   return (
     <>
     <CustomNavbar></CustomNavbar>
-    <Container id="about">
+    <Container id="about" className="home-section">
     <div style={{
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
       height: "100vh",
-      fontFamily: "Arial, sans-serif",
       textAlign: "center",
       padding: "20px",
     }}>

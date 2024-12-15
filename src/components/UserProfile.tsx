@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc, collection, getDocs, query, where, arrayRemove } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import CustomNavbar from "./Navbar";
-  
-
+import RoleCard from "./RoleCard";
 
 const UserProfile: React.FC = () => {
   const auth = getAuth();
@@ -20,10 +19,14 @@ const UserProfile: React.FC = () => {
     photo: "",
     resume: "",
   });
+  const [calledRoles, setCalledRoles] = useState<any[]>([]);
   const [editing, setEditing] = useState(false);
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [photoFile, setPhotoFile] = useState<File | null>(null);
 
+  const format_text = (text: string) => {
+    return text.toUpperCase();
+  }
   // Fetch logged-in user and their profile
   useEffect(() => {
     onAuthStateChanged(auth, async (currentUser) => {
@@ -41,6 +44,13 @@ const UserProfile: React.FC = () => {
                 photo: userData.photo || "",
                 resume: userData.resume || "",
               });
+              if (userData.calledRoles && userData.calledRoles.length > 0) {
+                const rolesRef = collection(db, "roles");
+                const q = query(rolesRef, where("__name__", "in", userData.calledRoles));
+                const rolesSnapshot = await getDocs(q);
+                const rolesList = rolesSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+                setCalledRoles(rolesList);
+              }
         }
       }
     });
@@ -56,6 +66,19 @@ const UserProfile: React.FC = () => {
 
   const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) setPhotoFile(e.target.files[0]);
+  };
+
+  const handleCall = async (roleId: string) => {
+    if (user) {
+      try {
+        const userRef = doc(db, "users", user.uid);
+        await setDoc(userRef, { calledRoles: arrayRemove(roleId) }, { merge: true });
+        setCalledRoles((prev) => prev.filter((role) => role.id !== roleId));
+        alert("Role has been removed from your called list.");
+      } catch (error) {
+        console.error("Error removing called role: ", error);
+      }
+    }
   };
 
   const validateProfile = (profile) => {
@@ -110,25 +133,8 @@ const UserProfile: React.FC = () => {
     <>
     <CustomNavbar></CustomNavbar>
     <Container id="user-profile" className="section">
-    <div className="profile">
-      <h1>User Profile</h1>
-      {profile.photo ? (
-        <div>
-          <img
-            src={profile.photo}
-            alt="Profile"
-            style={{
-              width: "150px",
-              height: "150px",
-              borderRadius: "50%",
-              objectFit: "cover",
-              border: "2px solid #FFF2B1",
-            }}
-          />
-        </div>
-      ) : (
-        <p>No profile picture uploaded.</p>
-      )}
+    <Row>
+    <Col className="profile">
       {editing ? (
         <>
           <input
@@ -183,28 +189,72 @@ const UserProfile: React.FC = () => {
         </>
       ) : (
         <>
-          <p>Name: {profile.name}</p>
-          <p>Age: {profile.ageRange}</p>
-          <p>Ethnicity: {profile.ethnicity}</p>
+          <p style={{fontSize: '5rem'}}>{format_text(profile.name)}</p>
+          {profile.photo ? (
+            <div>
+              <img
+                src={profile.photo}
+                alt="Profile"
+                style={{
+                  width: "350px",
+                  height: "350px",
+                  borderRadius: "0%",
+                  objectFit: "cover",
+                  border: "2px solid red",
+                }}
+              />
+            </div>
+          ) : (
+            <p>No profile picture uploaded.</p>
+          )}
+          <p style={{fontSize: '2rem'}}>Age: {profile.ageRange}</p>
+          <p style={{fontSize: '2rem'}}>Ethnicity: {profile.ethnicity}</p>
+          <div style={{display: 'flex', justifyContent: 'space-between', width: '350px'}}>
           {profile.resume && (
-            <p>
-              Resume:{" "}
-              <a href={profile.resume} target="_blank" rel="noopener noreferrer">
-                Download
-              </a>
-            </p>
+            <button 
+              className= "button"
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = profile.resume;
+                link.target = '_blank'; // Optional if the file opens in a new tab
+                link.download = `${profile.name}_Resume.pdf`; // Adjust the file name if needed
+                link.click();
+              }}
+              >
+              Download Resume
+            </button>
           )}
           
           <button
             onClick={() => setEditing(true)}
-            className="btn"
+            className="button"
             style={{ backgroundColor: "#CD4646", color: "#FFF2B1" }}
           >
             Edit Profile
           </button>
+          </div>
+          
         </>
       )}
-    </div>
+    </Col>
+    <Col className="profile">
+        <div className="posting">
+          {calledRoles.length > 0 ? (
+                calledRoles.map((role) => (
+                  <RoleCard
+                    key={role.id}
+                    role={role}
+                    onCall={handleCall}
+                    alreadyCalled={true}
+                  />
+                ))
+              ) : (
+                <p>No roles called yet.</p>
+              )}
+        </div>
+    </Col>
+    </Row>
+    
     </Container>
     </>
     

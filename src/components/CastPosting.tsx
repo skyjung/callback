@@ -20,7 +20,7 @@ const CastPosting: React.FC = () => {
     filmingEnd: "",
     location: "",
     traits: "",
-    compensation: "",
+    contact: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -52,7 +52,7 @@ const CastPosting: React.FC = () => {
         },
         location: role.location,
         traits: role.traits,
-        compensation: `$${parseFloat(role.compensation).toFixed(2)}`, // Format compensation as dollars
+        contact: role.contact, 
         postedBy: user.uid,
         createdAt: new Date(),
       });
@@ -67,7 +67,7 @@ const CastPosting: React.FC = () => {
         filmingEnd: "",
         location: "",
         traits: "",
-        compensation: "",
+        contact: "",
       });
     } catch (error) {
       console.error("Error posting casting call: ", error);
@@ -164,11 +164,10 @@ const CastPosting: React.FC = () => {
               className="input"
             />
             <input
-              type="number"
-              step="0.01"
-              name="compensation"
-              placeholder="Compensation (e.g., 500.00)"
-              value={role.compensation}
+              type="text"
+              name="contact"
+              placeholder="Contact (e.g. example@gmail.com)"
+              value={role.contact}
               onChange={handleChange}
               className="input"
               required
