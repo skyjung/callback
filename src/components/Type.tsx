@@ -28,7 +28,7 @@ function Type() {
         />
       ) : (
         <h1 className="Typewriter__wrapper" style={{fontWeight: 500, lineHeight:'1.5', whiteSpace: "nowrap",}}>
-          CALLBACK ...
+          CALLBACK
         </h1>
       )}
     </>

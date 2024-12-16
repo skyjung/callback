@@ -33,19 +33,27 @@ const CustomNavbar: React.FC = () => {
     <Navbar
       expanded={expand}
       fixed="top"
-      expand="md"
+      expand="false"
       className={navColour ? "sticky" : "navbar"}
     >
       <Container style={{'minWidth': '100%'}}>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
-          onClick={() => {
-            updateExpanded(expand ? false : true);
+          onClick={() => updateExpanded(!expand)}
+          style={{
+            background: "none",
+            border: "none",
+            padding: 0,
           }}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <img
+            src="/logo.svg" // Path to your logo image
+            alt="Logo"
+            style={{
+              height: "50px",
+              cursor: "pointer",
+            }}
+          />
         </Navbar.Toggle>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto" defaultActiveKey="#home">
@@ -54,6 +62,11 @@ const CustomNavbar: React.FC = () => {
                 home
               </Nav.Link>
             </Nav.Item>
+            {/* <Nav.Item>
+                <Nav.Link as={Link} to="/about" onClick={() => updateExpanded(false)}>
+                    about
+                </Nav.Link>
+            </Nav.Item> */}
             {user ? 
             <>
             <Nav.Item>
@@ -88,11 +101,7 @@ const CustomNavbar: React.FC = () => {
                     register
                 </Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-                <Nav.Link as={Link} to="/about" onClick={() => updateExpanded(false)}>
-                    about
-                </Nav.Link>
-            </Nav.Item>
+            
             </>
             }
           </Nav>

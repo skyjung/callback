@@ -12,27 +12,6 @@ import Footer from "./components/Footer";
 import { AnimatePresence } from "framer-motion";
 import PageWipe from "./components/PageWipe";
 
-// PageWipe Component for Transitions
-// const PageWipe = ({ children }) => {
-//   return (
-//     <motion.div
-//       initial={{ translateY: "100%" }}
-//       animate={{ translateY: "0%" }}
-//       exit={{ translateY: "-100%" }}
-//       transition={{
-//         duration: 0.8,
-//         ease: [0.4, 0, 0.2, 1],
-//       }}
-//       style={{
-//         position: "absolute",
-//         width: "100%",
-//         height: "100%",
-//       }}
-//     >
-//       {children}
-//     </motion.div>
-//   );
-// };
 
 // Routes with Animations
 const AnimatedRoutes = () => {
@@ -113,11 +92,20 @@ const AnimatedRoutes = () => {
 const App = () => {
   return (
     <Router>
-      <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-        <div style={{ flex: 1 }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          position: "relative",
+          overflow: "hidden", 
+        }}
+      >
+        <div style={{ flex: 1, position: "relative" , overflow: "hidden", }}>
           <AnimatedRoutes />
+          <Footer />
         </div>
-        <Footer />
+        
       </div>
     </Router>
   );

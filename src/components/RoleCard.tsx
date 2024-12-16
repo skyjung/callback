@@ -27,7 +27,7 @@ const RoleCard: React.FC<{ role: Role; onCall: (roleId: string) => void; already
     <Card style={{ marginBottom: "10px", border: "2px solid #E70000", borderRadius: '0px', background: 'none'}}>
       <Card.Body>
         <Card.Title style={{color: '#E70000', fontWeight: 500, fontSize: 'xx-large'}}>{role.name}</Card.Title>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px',  marginBottom: '10px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px',  marginBottom: '10px'}}>
           <Card.Text style={{ marginBottom: 0 }}>Age Range: {role.ageRange ? `${role.ageRange.start} - ${role.ageRange.end}` : "Not specified"}</Card.Text>
           <Card.Text style={{ marginBottom: 0 }}>Ethnicity: {role.ethnicity || "Not specified"}</Card.Text>
           <Card.Text style={{ marginBottom: 0 }}>Description: {role.description || "Not specified"}</Card.Text>

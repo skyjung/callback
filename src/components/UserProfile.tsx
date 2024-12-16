@@ -202,7 +202,7 @@ const UserProfile: React.FC = () => {
                   height: "350px",
                   borderRadius: "0%",
                   objectFit: "cover",
-                  border: "2px solid red",
+                  border: "2px solid #E70000",
                 }}
               />
             </div>
@@ -242,7 +242,7 @@ const UserProfile: React.FC = () => {
       )}
     </Col>
     <Col className="profile">
-        <h4 className="page_title">Saved Roles</h4>
+        <h2 className="page_title">Saved Roles</h2>
         <div className="posting">
           {calledRoles.length > 0 ? (
                 calledRoles.map((role) => (

@@ -216,9 +216,9 @@ const SearchPage: React.FC = () => {
   return (
     <>
       <CustomNavbar />
-      <Container id="search" className="home-section">
+      <Container id="search" className="default-section">
         <div className="search" style={{paddingRight: '2rem'}}>
-          <h4 className="page_title">Search roles</h4>
+          <h2 className="page_title">Search roles</h2>
           <input
             type="text"
             placeholder="Search by Role, Location, Traits, Age Range, or Dates"
@@ -226,7 +226,7 @@ const SearchPage: React.FC = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <div>
+          <div >
             {filteredRoles.length > 0 ? (
               filteredRoles.map((role) => (
                 <RoleCard
