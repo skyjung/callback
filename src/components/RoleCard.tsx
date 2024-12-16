@@ -26,17 +26,19 @@ const RoleCard: React.FC<{ role: Role; onCall: (roleId: string) => void; already
   return (
     <Card style={{ marginBottom: "10px", border: "2px solid #E70000", borderRadius: '0px', background: 'none'}}>
       <Card.Body>
-        <Card.Title style={{color: '#E70000', fontWeight: 800}}>{role.name}</Card.Title>
-        <Card.Text>Age Range: {role.ageRange ? `${role.ageRange.start} - ${role.ageRange.end}` : "Not specified"}</Card.Text>
-        <Card.Text>Ethnicity: {role.ethnicity || "Not specified"}</Card.Text>
-        <Card.Text>Description: {role.description || "Not specified"}</Card.Text>
-        <Card.Text>
-          Filming Dates: {role.filmingDates ? `${formatDate(role.filmingDates.start)} - ${formatDate(role.filmingDates.end)}` : "Not specified"}
-        </Card.Text>
-        <Card.Text>Location: {role.location || "Not specified"}</Card.Text>
-        <Card.Text>Nice-to-Have: {role.traits || "Not specified"}</Card.Text>
-        <Card.Text>Contact: {role.contact || "Not specified"}</Card.Text>
-        <Card.Text>Posted: {formatDate(role.createdAt) || "Not specified"}</Card.Text>
+        <Card.Title style={{color: '#E70000', fontWeight: 500, fontSize: 'xx-large'}}>{role.name}</Card.Title>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px',  marginBottom: '10px' }}>
+          <Card.Text style={{ marginBottom: 0 }}>Age Range: {role.ageRange ? `${role.ageRange.start} - ${role.ageRange.end}` : "Not specified"}</Card.Text>
+          <Card.Text style={{ marginBottom: 0 }}>Ethnicity: {role.ethnicity || "Not specified"}</Card.Text>
+          <Card.Text style={{ marginBottom: 0 }}>Description: {role.description || "Not specified"}</Card.Text>
+          <Card.Text style={{ marginBottom: 0 }}>
+            Filming Dates: {role.filmingDates ? `${formatDate(role.filmingDates.start)} - ${formatDate(role.filmingDates.end)}` : "Not specified"}
+          </Card.Text>
+          <Card.Text style={{ marginBottom: 0 }}>Location: {role.location || "Not specified"}</Card.Text>
+          <Card.Text style={{ marginBottom: 0 }}>Nice-to-Have: {role.traits || "Not specified"}</Card.Text>
+          <Card.Text style={{ marginBottom: 0 }}>Contact: {role.contact || "Not specified"}</Card.Text>
+          <Card.Text style={{ marginBottom: 0 }}>Posted: {formatDate(role.createdAt) || "Not specified"}</Card.Text>
+        </div>
         <button className="button" onClick={() => onCall(role.id)} disabled={alreadyCalled}>
           {alreadyCalled ? "Remove" : "Call"}
         </button>

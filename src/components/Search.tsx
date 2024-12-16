@@ -217,8 +217,8 @@ const SearchPage: React.FC = () => {
     <>
       <CustomNavbar />
       <Container id="search" className="home-section">
-        <div className="search">
-          <h1>Search Roles</h1>
+        <div className="search" style={{paddingRight: '2rem'}}>
+          <h4 className="page_title">Search roles</h4>
           <input
             type="text"
             placeholder="Search by Role, Location, Traits, Age Range, or Dates"

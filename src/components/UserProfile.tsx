@@ -25,7 +25,9 @@ const UserProfile: React.FC = () => {
   const [photoFile, setPhotoFile] = useState<File | null>(null);
 
   const format_text = (text: string) => {
-    return text.toUpperCase();
+    // return text.toUpperCase();
+    return text;
+
   }
   // Fetch logged-in user and their profile
   useEffect(() => {
@@ -207,8 +209,10 @@ const UserProfile: React.FC = () => {
           ) : (
             <p>No profile picture uploaded.</p>
           )}
-          <p style={{fontSize: '2rem'}}>Age: {profile.ageRange}</p>
-          <p style={{fontSize: '2rem'}}>Ethnicity: {profile.ethnicity}</p>
+          <div style={{display: 'flex', gap: '5px', flexDirection: 'column'}}>
+          <p style={{fontSize: '2rem', margin: 0}}>Age: {profile.ageRange}</p>
+          <p style={{fontSize: '2rem', margin: 0}}>Ethnicity: {profile.ethnicity}</p>
+          </div>
           <div style={{display: 'flex', justifyContent: 'space-between', width: '350px'}}>
           {profile.resume && (
             <button 
@@ -238,6 +242,7 @@ const UserProfile: React.FC = () => {
       )}
     </Col>
     <Col className="profile">
+        <h4 className="page_title">Saved Roles</h4>
         <div className="posting">
           {calledRoles.length > 0 ? (
                 calledRoles.map((role) => (

@@ -12,6 +12,7 @@ body {
   font-family: 'InstrumentSerif', serif !important;
   background-color: #E70000;
   color: #FFF2B1;
+  font-size: 12px;
 }
 
 html, body {
@@ -38,7 +39,7 @@ html, body {
   
   
     /* themes */
-  
+    --page-background-color: var(--lime);
     --page-color: var(--lime);
     --btn-bg-color: var(--page-color);
     --scrollbar-bg-color: var(--dark-gray-color);
@@ -95,7 +96,7 @@ html, body {
       }
       h4 {
         font-family: 'InstrumentSerif', sans-serif;
-        font-size: small;
+        font-size: large;
         color:#E70000;
       }
       .company-name{
@@ -105,10 +106,12 @@ html, body {
     p {
       font-family: 'InstrumentSerif', serif;
       color: var(--black-color);
+      font-size: '12px';
     }
   
     body {
-      font-size: '10px';
+      font-size: '12px';
+      background-color: var(--lime);
     }
   
     a:link, a:visited, a:hover, a:active {
@@ -139,11 +142,20 @@ html, body {
     }
 
     h4 {
-      font-family: 'InstrumentSerif', sans-serif !important;
-      font-size: 1.5em;
+      font-family: 'InstrumentSerif' !important;
+      font-size: large;
       line-height: 1.8;
       font-weight: 500;
       color: var(--black-color);
+    }
+
+    p {
+      font-size: large;
+    }
+
+    .page_title {
+      font-size: 5rem !important;
+      color: var(--black-color) !important;
     }
 
     .Typewriter__wrapper {
@@ -389,6 +401,7 @@ html, body {
     position: relative;
     /* align-items: flex-start;
     justify-content: center; */
+    padding-top: 2rem;
     min-height: 100vh;
     min-width: 100vw;
     background-color: var(--lime);
@@ -432,6 +445,7 @@ html, body {
 .search {
     width: 50%;
     padding: 10px;
+    padding-right: '2rem';
     margin-bottom: 15px;
     /* border: 1px solid #55987D; */
     border-radius: 2px;
@@ -464,13 +478,14 @@ html, body {
   }
   
   .button {
-    padding: 10px 20px;
+    padding: 7px 14px;
     border: none;
     border-radius: 2px;
     background-color: #55987D;
     color: #FFF2B1;
-    font-size: 15px;
+    font-size: 20px;
     cursor: pointer;
+    float: right;
   }
   
   .button:hover {
@@ -509,6 +524,7 @@ html, body {
     /* font-size: x-small !important; */
     padding-top: 10px !important;
     padding-bottom: 8px !important ;
+    background-color: var(--lime);
   }
   .footer-copywright {
     text-align: center !important;

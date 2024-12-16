@@ -79,8 +79,8 @@ const CastPosting: React.FC = () => {
     <>
       <CustomNavbar />
       <Container id="cast-posting" className="home-section">
-        <div className="content">
-          <h1>Post a Casting Call</h1>
+        <div style={{width: '75%', paddingLeft: '2rem'}}>
+          <h4 className="page_title">Post a Casting Call</h4>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
