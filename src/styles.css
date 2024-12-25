@@ -92,11 +92,11 @@ html, body {
         font-size: large;
       }
       h2 {
-        font-family: 'Univers Else', sans-serif;
-        font-size: small;
+        font-family: 'InstrumentSerif', sans-serif;
+        font-size: large;
       }
       h3 {
-        font-family: 'Univers Else', sans-serif;
+        font-family: 'InstrumentSans', sans-serif;
         font-size: small;
       }
       h4 {
@@ -133,7 +133,7 @@ html, body {
     }
   
     h2 {
-      font-size: 2em;
+      font-size: 2.5em;
       line-height: 1.8;
       font-weight: 600;
       font-family: 'InstrumentSerif', sans-serif !important;
@@ -155,7 +155,7 @@ html, body {
     }
 
     p {
-      font-size: large;
+      font-size: medium;
     }
 
     .page_title {
@@ -419,11 +419,11 @@ html, body {
 }
 
 .default-section {
-  /* display: flex; */
+  display: flex;
   position: relative;
   min-height: 100vh;
   min-width: 100vw;
-  padding: 10rem 0rem 0rem 0rem;
+  padding: 5rem 0rem 0rem 2rem;
   background-color: var(--lime);
 }
 
@@ -448,51 +448,134 @@ html, body {
     background-color: var(--lime);
 }
 
+.profile-section {
+  /* display: flex; */
+  position: relative;
+  /* align-items: flex-start;
+  justify-content: center; */
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: var(--lime);
+}
+
 .content {
-    padding: 8rem 5rem 8rem 5rem !important;
-    color: var(--black-color);
-    text-align: left;
-    width: 100%;
-    align-items: flex-start;
-    justify-content: center;
+  padding: 8rem 5rem 8rem 5rem !important;
+  color: var(--black-color);
+  text-align: left;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .postings {
   border: 2px solid var(--black-color);
   width: 100%;
-  height: auto;
+  height: 300px;
   display: flex;
   justify-content: space-between;
 }
 
 .posting {
-  border: 2px solid red;
+  /* border: 2px solid #E70000; */
   border-radius: 0;
   width: 100%;
+  height: 100%;
   /* margin: 20px; */
-  padding: 20px;
-  height: auto;
+  padding: 1rem;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  overflow-y: scroll;
+  font-family: 'InstrumentSans' !important;
+}
+
+.roles {
+  padding: 5rem 3rem 3rem 2rem !important;
+  color: var(--black-color);
+  text-align: left;
+  width: 100%;
+}
+
+.role-card-text {
+  margin-bottom: 2px;
+  font-family: 'InstrumentSans';
+  font-size: '14px' !important;
+}
+
+.role-card-buttons {
+  position: absolute; /* Position the buttons relative to the card */
+  top: 10px; /* Adjust vertical positioning */
+  right: 10px; /* Adjust horizontal positioning */
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+.profile-photo {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: solid 2px var(--black-color);
+  margin-bottom: 10px;
 }
 
 .profile {
-    padding: 8rem 8rem 8rem 8rem !important;
-    color: var(--black-color);
-    text-align: left;
-    width: 70%;
+  padding: 5rem 2rem 2rem 2rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  color: var(--black-color);
+  text-align: left;
+  /* justify-content: space-between; */
+  font-family: 'InstrumentSans';
+  font-size: '10px' !important;
+  /* width: 100%; */
 }
 
 .search {
-    width: 50%;
-    padding: 10px;
-    padding-right: '2rem';
-    margin-bottom: 15px;
-    /* border: 1px solid #55987D; */
-    border-radius: 2px;
-    background-color: var(--lime);
-    color: #1D1D1D;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  /* border: 1px solid #55987D; */
+  border-radius: 2px;
+  background-color: var(--lime);
+  color: #1D1D1D;
 }
+.searchbar {
+  font-family: 'InstrumentSerif';
+  width: 70%;
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  outline: none; /* Prevent outline on focus */
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--black-color); /* Default to no underline */
+  transition: border-bottom 0.3s ease; /* Smooth underline transition */
+}
+
+.searchbar:focus,
+.searchbar:active {
+  outline: none; /* Prevent focus styles */
+  border: none;  /* Prevent border changes */
+  background-color: transparent; /* Maintain transparent background */
+  border-bottom: 2px solid var(--black-color); /* Add red underline on focus or active */
+}
+
+.search-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Responsive grid with minimum 250px card width */
+  gap: 0px; /* Space between cards */
+}
+
+.role-card {
+  height: 400px; /* Set a consistent height */
+  display: flex;
+  /* border: solid 2px black; */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 400px;
+  overflow-y: scroll;
+}
+
+
 
 .form {
     max-width: 400px;
@@ -524,7 +607,7 @@ html, body {
     border-radius: 2px;
     background-color: #55987D;
     color: #FFF2B1;
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
     float: right;
   }

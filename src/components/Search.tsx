@@ -109,7 +109,7 @@
 // export default SearchPage;
 
 import React, { useState, useEffect } from "react";
-import { getFirestore, collection, getDocs, query, orderBy, doc, updateDoc, arrayUnion, getDoc, arrayRemove } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, orderBy, doc, updateDoc, where, arrayUnion, getDoc, arrayRemove } from "firebase/firestore";
 import { Container, Card, Button } from "react-bootstrap";
 import CustomNavbar from "./Navbar";
 import { getAuth } from "firebase/auth";
@@ -135,7 +135,8 @@ const SearchPage: React.FC = () => {
   const auth = getAuth();
   const [roles, setRoles] = useState<Role[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [calledRoles, setCalledRoles] = useState<string[]>([]);
+  const [calledRoles, setCalledRoles] = useState<any[]>([]);
+  const [postedRoles, setPostedRoles] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchRoles = async () => {
@@ -169,7 +170,23 @@ const SearchPage: React.FC = () => {
       }
     };
 
+    const fetchPostedRoles = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        try { 
+          const postedRolesQuery = query(collection(db, "roles"), where("postedBy", "==", user.uid));
+          const postedRolesSnapshot = await getDocs(postedRolesQuery);
+          const postedRolesList = postedRolesSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+          setPostedRoles(postedRolesList);
+        }
+        catch (error) {
+          console.error("Error fetching posted roles: ", error)
+        }
+      }
+    };
+
     fetchCalledRoles();
+    fetchPostedRoles();
   }, [db, auth]);
 
   const handleCall = async (roleId: string) => {
@@ -222,19 +239,23 @@ const SearchPage: React.FC = () => {
           <input
             type="text"
             placeholder="Search by Role, Location, Traits, Age Range, or Dates"
-            className="input"
+            className="searchbar"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <div >
+          <div className="search-results">
             {filteredRoles.length > 0 ? (
               filteredRoles.map((role) => (
-                <RoleCard
-                  key={role.id}
-                  role={role}
-                  onCall={handleCall}
-                  alreadyCalled={calledRoles.includes(role.id)}
-                />
+                <div className="role-card">
+                  <RoleCard
+                    key={role.id}
+                    role={role}
+                    posted={postedRoles.includes(role.id)}
+                    onCall={handleCall}
+                    alreadySaved={calledRoles.includes(role.id)}
+                  />
+                </div>
+                
               ))
             ) : (
               <p>No roles found.</p>

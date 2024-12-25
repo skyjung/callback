@@ -80,7 +80,7 @@ const CastPosting: React.FC = () => {
       <CustomNavbar />
       <Container id="cast-posting" className="default-section">
         <div style={{width: '75%', paddingLeft: '2rem'}}>
-          <h2 className="page_title">Post a Casting Call</h2>
+          <h2 className="page_title">Post a role</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
