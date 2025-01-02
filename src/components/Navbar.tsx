@@ -8,7 +8,7 @@ import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 const CustomNavbar: React.FC = () => {
-  const [expand, updateExpanded] = useState(false);
+  const [expand, updateExpanded] = useState(true);
   const [navColour, updateNavbar] = useState(false);
   const auth = getAuth();
   const [user] = useAuthState(auth);
@@ -31,10 +31,11 @@ const CustomNavbar: React.FC = () => {
 
   return (
     <Navbar
-      expanded={expand}
+      expanded={true}
       fixed="top"
-      expand="false"
+      expand="md"
       className={navColour ? "sticky" : "navbar"}
+      style={{zIndex: 999}}
     >
       <Container style={{'minWidth': '100%'}}>
         <Navbar.Toggle

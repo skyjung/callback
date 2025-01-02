@@ -255,33 +255,32 @@ html, body {
       font-size: 2rem !important;
       font-family: 'InstrumentSerif' !important;
       width: 100%;
+      z-index: 1;
       /* background-color: var(--lime); */
     }
 
     .navbar-nav {
       display: flex;
-      flex-direction: column !important; 
-      /* align-items: flex-start; Align items to the left */
-      width: 5%; /* Ensure it spans full width */
-      padding-right: '1rem'
+      flex-direction: row !important; 
+      align-items: flex-start;
+      width: 100%;
+      z-index: 1;
+      /* padding-right: '1rem' */
     }
     
     .nav-item {
       width: 100%; /* Make each nav item span the full width */
-      padding-right: '1rem' !important;
+      /* padding-right: '1rem' !important; */
     }
     
     .nav-link {
       display: block; /* Ensure the links behave like block elements */
       width: 100%;
-      padding: 1rem 1.5rem; /* Adjust padding for better spacing */
-      text-align: right; /* Align text to the left */
+      text-align: left; /* Align text to the left */
     }
     
     .navbar-toggler {
-      position: absolute; /* Ensures it can be positioned freely */
-      top: 1rem; /* Adjust vertical position */
-      right: 2rem; /* Align to the top-right corner */
+      position: relative; /* Ensures it can be positioned freely */
       background-color: transparent !important;
       border-color: transparent !important;
     }
@@ -291,8 +290,7 @@ html, body {
     }
 
     .navbar-collapse {
-      margin-top: 60px; /* Space the nav items below the toggler */
-      text-align: right;
+      text-align: left;
     }
     
     .navbar-toggler span {
@@ -319,7 +317,7 @@ html, body {
     }
     
     .navbar-toggler:not(.collapsed) span:nth-child(1) {
-      position: absolute !important;
+      position: relative !important;
       left: 12px !important;
       top: 10px !important;
       transform: rotate(135deg) !important;
@@ -495,6 +493,25 @@ html, body {
   width: 100%;
 }
 
+.role-card {
+  /* border: 2px solid #E70000; */
+  background: transparent;
+  height: 275px;
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.role-card-body {
+  box-shadow: 'none';
+  flex-direction: column;
+  height: 275px;
+}
+
 .role-card-text {
   margin-bottom: 2px;
   font-family: 'InstrumentSans';
@@ -503,10 +520,18 @@ html, body {
 
 .role-card-buttons {
   position: absolute; /* Position the buttons relative to the card */
-  top: 10px; /* Adjust vertical positioning */
-  right: 10px; /* Adjust horizontal positioning */
+  top: 15px; /* Adjust vertical positioning */
+  right: 20px; /* Adjust horizontal positioning */
   display: flex;
   gap: 10px; /* Space between buttons */
+}
+
+.role-page {
+  background-color: transparent;
+  padding: 8rem 2rem 2rem 2rem;
+  text-align: center;
+  color: var(--black-color);
+  font-family: 'InstrumentSans';
 }
 
 .profile-photo {
@@ -562,19 +587,9 @@ html, body {
 .search-results {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Responsive grid with minimum 250px card width */
-  gap: 0px; /* Space between cards */
+  gap: 2px; /* Space between cards */
+  /* border: none; */
 }
-
-.role-card {
-  height: 400px; /* Set a consistent height */
-  display: flex;
-  /* border: solid 2px black; */
-  flex-direction: column;
-  justify-content: space-between;
-  width: 400px;
-  overflow-y: scroll;
-}
-
 
 
 .form {
