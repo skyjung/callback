@@ -64,7 +64,7 @@ const AnimatedRoutes = () => {
           }
         />
         <Route
-          path="/post"
+          path="/create"
           element={
             <PageWipe>
               <ProtectedRoute>

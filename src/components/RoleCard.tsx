@@ -2,6 +2,8 @@ import * as React from "react";
 import { useState } from "react";
 import { Card } from "react-bootstrap";
 import RolePage from "./RolePage";
+import { DateTime } from "luxon";
+
 
 export interface Role {
   id: string;
@@ -31,12 +33,13 @@ const RoleCard: React.FC<{ role: Role; onCall: (roleId: string) => void; already
   
   const formatDate = (date: any): string => {
     if (!date) return "Not specified";
-    if (date.seconds) {
-      return new Date(date.seconds * 1000).toLocaleDateString();
-    }
-    return new Date(date).toLocaleDateString();
-  };
 
+    const parsedDate = date.seconds
+        ? DateTime.fromSeconds(date.seconds).setZone("local")
+        : DateTime.fromISO(date).setZone("local");
+
+    return parsedDate.toLocaleString(DateTime.DATE_SHORT);
+    };
   // Pass role contact to handleCall
   function handleContact() {
     window.location.href = `mailto:${role.contact}?subject=Interested in your role posting&body=Hi, I am interested in the role posted.`;

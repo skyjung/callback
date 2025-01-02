@@ -79,7 +79,7 @@ const UserProfile: React.FC = () => {
         const userRef = doc(db, "users", user.uid);
         await setDoc(userRef, { calledRoles: arrayRemove(roleId) }, { merge: true });
         setCalledRoles((prev) => prev.filter((role) => role.id !== roleId));
-        alert("Role has been removed from your called list.");
+        // alert("Role has been removed from your called list.");
       } catch (error) {
         console.error("Error removing called role: ", error);
       }

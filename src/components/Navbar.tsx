@@ -93,7 +93,7 @@ const CustomNavbar: React.FC = () => {
               </Nav.Link>
             </Nav.Item> */}
             <Nav.Item>
-              <Nav.Link as={Link} to="/post" onClick={() => updateExpanded(false)}>
+              <Nav.Link as={Link} to="/create" onClick={() => updateExpanded(false)}>
                 create
               </Nav.Link>
             </Nav.Item>
@@ -110,6 +110,7 @@ const CustomNavbar: React.FC = () => {
                   border: "none",
                   boxShadow: "none",
                   padding: 0,
+                  
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", cursor: "pointer", }}>
@@ -124,7 +125,6 @@ const CustomNavbar: React.FC = () => {
                       marginRight: "8px",
                     }}
                   />
-                  <span>▼</span>
                 </div>
               </Dropdown.Toggle>
               <Dropdown.Menu style={{background: 'none', border: '2px solid #E70000', borderRadius: '0'}}>
