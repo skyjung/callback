@@ -254,7 +254,7 @@ html, body {
       padding: 0.3rem 2rem !important;
       font-size: 2rem !important;
       font-family: 'InstrumentSerif' !important;
-      width: 100%;
+      width: 30%;
       z-index: 1;
       /* background-color: var(--lime); */
     }
@@ -543,7 +543,7 @@ html, body {
 }
 
 .profile {
-  padding: 5rem 2rem 2rem 2rem !important;
+  padding: 8rem 2rem 0rem 2rem !important;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -554,10 +554,109 @@ html, body {
   font-size: '10px' !important;
   /* width: 100%; */
 }
+.profile-icon {
+  /* position: fixed;
+  top: 10px;
+  right: 10px; */
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 999;
+}
+
+.roles-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.roles-view-btn {
+  border: 0px;
+  margin-left: 20px;
+  background-color: transparent;
+  font-size: x-large;
+}
+
+.roles-view-btn a {
+  text-decoration: none; /* Remove default underline */
+  color: inherit; /* Ensure the link inherits the text color */
+  position: relative; /* Needed for the pseudo-element positioning */
+}
+
+.roles-view-btn a::after {
+  content: "";
+  position: absolute; /* Absolute positioning for underline */
+  display: block;
+  height: 2px;
+  width: 0;
+  border-radius: 1px;
+  background: var(--light-blue); /* Custom light blue color */
+  bottom: -2px; /* Adjust position below the text */
+  left: 0;
+  transition: width 0.3s ease-out; /* Smooth transition */
+}
+
+
+.roles-view-btn a:hover::after {
+  width: 100%;
+}
+
+
+.dropdown {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+#profile-dropdown .dropdown-toggle {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+#profile-dropdown span {
+  margin-left: 5px;
+  font-size: 14px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+#profile-dropdown:hover {
+  border: 2px solid var(--black-color);
+  transition: all ease-in 0.1s;
+  box-shadow: #E70000;
+}
+
+.dropdown-menu .dropdown-item {
+  transition: background-color 0.2s ease-in-out; /* Smooth transition */
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #ffeaea; /* Light pink background on hover */
+}
+
+#profile-dropdown img {
+  transition: transform 0.2s ease-in-out; /* Smooth scaling effect */
+}
+
+#profile-dropdown:hover img {
+  transform: scale(1.1); /* Scale the profile image */
+  border: 2px solid var(--black-color);
+}
+
+
+.profile-icon :hover {
+  border: 2px solid var(--black-color);
+  transition: ease-in 0.1s;
+  box-shadow: #E70000;
+}
+
 
 .search {
   width: 100%;
-  padding: 10px;
+  padding: 2rem;
   margin-bottom: 15px;
   /* border: 1px solid #55987D; */
   border-radius: 2px;

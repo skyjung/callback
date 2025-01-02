@@ -11,7 +11,7 @@ const UserProfile: React.FC = () => {
   const auth = getAuth();
   const db = getFirestore();
   const storage = getStorage();
-
+  const [createdView, setCreatedView] = useState(true);
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState({
     name: "",
@@ -58,7 +58,8 @@ const UserProfile: React.FC = () => {
         }
       }
     });
-  }, [auth, db]);
+  }, [auth, db, createdView]);
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
@@ -145,17 +146,8 @@ const UserProfile: React.FC = () => {
       <CustomNavbar />
       <Container id="user-profile" className="profile-section">
         <Row style={{height: '100vh'}}>
-        <Col
-            xs={3}
-            className="profile"
-            style={{
-              backgroundColor: "#fff8e1",
-              outline: "solid 2px #1e1e1e",
-              textAlign: "left",
-            }}
-          >
-            <h2 className="page_title">Profile</h2>
-            <div>
+            {/* <h2 className="page_title">Profile</h2> */}
+            <div className="profile">
             {editing ? (
               <>
                 <input
@@ -195,7 +187,7 @@ const UserProfile: React.FC = () => {
                 </button>
               </>
             ) : (
-              <div >
+              <div style={{display: 'flex', gap: '2rem'}}>
                 {profile.photo && (
                   <img
                     src={profile.photo}
@@ -203,61 +195,61 @@ const UserProfile: React.FC = () => {
                     className="profile-photo"
                   />
                 )}
-                <p className="role-card-text" style={{fontWeight: 600}}>{profile.name}</p>
-                <p className="role-card-text">Age: {profile.ageRange}</p>
-                <p className="role-card-text">Ethnicity: {profile.ethnicity}</p>
-                <div style={{display: 'flex', gap: '10px', marginTop: '5px'}}>
-                {profile.resume && (
-                  <button
-                    style={{
-                      background: 'transparent',
-                      border: 'none'
-                    }}
-                    onClick={() => {
-                      const link = document.createElement("a");
-                      link.href = profile.resume;
-                      link.download = `${profile.name}_Resume.pdf`;
-                      link.click();
-                    }}
-                  >
-                    <img
-                      src="/download.svg"
-                      alt="download"
-                      style={{ height: "35px", objectFit: 'cover' }}
-                    />
-                  </button>
-                )}
-                <button
-                  onClick={() => setEditing(true)}
-                  style={{
-                    background: 'transparent',
-                    border: 'none'
-                  }}
-                >
-                  <img
-                    src="/edit.svg"
-                    alt="edit"
-                    style={{ height: "35px", objectFit: 'cover' }}
-                  />
-                </button>
+                <div>
+                  <h1 className="role-card-text" style={{fontWeight: 600}}>{profile.name}</h1>
+                  <p className="role-card-text">Age: {profile.ageRange}</p>
+                  <p className="role-card-text">Ethnicity: {profile.ethnicity}</p>
+                  <div style={{display: 'flex', gap: '10px', marginTop: '5px'}}>
+                    {profile.resume && (
+                      <button
+                        style={{
+                          background: 'transparent',
+                          border: 'none'
+                        }}
+                        onClick={() => {
+                          const link = document.createElement("a");
+                          link.href = profile.resume;
+                          link.download = `${profile.name}_Resume.pdf`;
+                          link.click();
+                        }}
+                      >
+                        <img
+                          src="/download.svg"
+                          alt="download"
+                          style={{ height: "30px", objectFit: 'cover' }}
+                        />
+                      </button>
+                    )}
+                    <button
+                      onClick={() => setEditing(true)}
+                      style={{
+                        background: 'transparent',
+                        border: 'none'
+                      }}
+                    >
+                      <img
+                        src="/edit.svg"
+                        alt="edit"
+                        style={{ height: "30px", objectFit: 'cover' }}
+                      />
+                    </button>
+                    </div>
                 </div>
-                
               </div>
             )}
             </div>
+            <div style={{padding: '2rem'}}>
+                <div className="roles-header" style={{maxHeight: '20px', alignItems: 'baseline'}}>
+                  <h3>my roles</h3>
+                  <div>
+                    <button className="roles-view-btn" onClick={()=> setCreatedView(true)}><a style={createdView ? {color: '#E70000'} : {}}>created</a></button>
+                    <button className="roles-view-btn" onClick={()=> setCreatedView(false)}><a style={createdView ? {} : {color: '#E70000'}}>saved</a></button>
+                  </div>
+                </div>
             
-          </Col>
-          <Col
-            xs={4}
-            className="roles"
-            style={{
-              backgroundColor: "#f9f9f9",
-              outline: "solid 2px #E70000",
-              height: "100vh",
-              overflowY: "auto",
-            }}
-          >
-            <h2>Posted Roles</h2>
+          
+          {createdView ? 
+          <Row xs={12}>
             <div className="posting">
               {postedRoles.length > 0 ? (
                 postedRoles.map((role) => (
@@ -274,19 +266,9 @@ const UserProfile: React.FC = () => {
                 <p>No roles posted yet.</p>
               )}
             </div>
-          </Col>
-          <Col
-            xs={4}
-            className="roles"
-            style={{
-              backgroundColor: "#eef7ff",
-              outline: "solid 2px #E70000",
-              height: "100vh",
-              overflowY: "auto",
-              paddingRight: '5rem',
-            }}
-          >
-            <h2>Saved Roles</h2>
+          </Row>
+          :
+          <Row xs={12}>
             <div className="posting">
               {calledRoles.length > 0 ? (
                 calledRoles.map((role) => (
@@ -302,8 +284,9 @@ const UserProfile: React.FC = () => {
                 <p>No roles saved yet.</p>
               )}
             </div>
-          </Col>
-          
+          </Row>
+        }
+        </div>
         </Row>
       </Container>
     </>
